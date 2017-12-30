@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
-using Web.Models;
+using MyFarm.Web.Models;
 
-namespace Web.Controllers
+namespace MyFarm.Web.Controllers
 {
     public class FarmController : Controller
     {

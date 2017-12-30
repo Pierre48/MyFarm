@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace Infrastructure.Migrations
+namespace MyFarm.Infrastructure.Migrations
 {
     public partial class initialCreatee : Migration
     {

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using System;
 using System.Collections.Generic;
 
-namespace Infrastructure.Migrations
+namespace MyFarm.Infrastructure.Migrations
 {
     public partial class initialCreateq : Migration
     {

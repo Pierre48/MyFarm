@@ -1,10 +1,10 @@
-﻿using Core.Interfaces;
+﻿using MyFarm.Core.Interfaces;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Infrastructure.Logging
+namespace MyFarm.Infrastructure.Logging
 {
     public class LoggerAdapter<T> : IAppLogger<T>
     {

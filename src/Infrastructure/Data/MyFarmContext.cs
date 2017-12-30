@@ -1,4 +1,4 @@
-﻿using Core.Entities;
+﻿using MyFarm.Core.Entities;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -6,7 +6,7 @@ using System.Text;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.Extensions.Configuration;
 
-namespace Infrastructure.Data
+namespace MyFarm.Infrastructure.Data
 {
 
     public class MyFarmContext : DbContext

@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 
-namespace Infrastructure.Data
+namespace MyFarm.Infrastructure.Data
 {
     public class DesignTimeDbContextFactory : IDesignTimeDbContextFactory<MyFarmContext>
     {
