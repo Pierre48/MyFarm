@@ -10,7 +10,7 @@ using MyFarm.Web.ViewModels.Account;
 using System;
 using System.Threading.Tasks;
 
-namespace Microsoft.eShopWeb.Controllers
+namespace MyFarm.Web.Controllers
 {
 
     [Route("[controller]/[action]")]

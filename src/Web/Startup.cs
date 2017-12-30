@@ -14,6 +14,7 @@ using MyFarm.Infrastructure.Logging;
 using System.Text;
 using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
+using MyFarm.Infrastructure.Services;
 
 namespace Web
 {
@@ -92,6 +93,7 @@ namespace Web
             services.AddScoped(typeof(IAsyncRepository<>), typeof(EfRepository<>));
 
             services.AddScoped(typeof(IAppLogger<>), typeof(LoggerAdapter<>));
+            services.AddScoped(typeof(IEmailSender), typeof(EmailSender));
 
             // Add memory cache services
             services.AddMemoryCache();
