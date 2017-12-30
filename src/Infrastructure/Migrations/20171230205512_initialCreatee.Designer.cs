@@ -11,9 +11,10 @@ using System;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MyFarmContext))]
-    partial class MyFarmContextModelSnapshot : ModelSnapshot
+    [Migration("20171230205512_initialCreatee")]
+    partial class initialCreatee
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

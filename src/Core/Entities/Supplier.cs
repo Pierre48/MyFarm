@@ -6,10 +6,10 @@ using System.Text;
 
 namespace Core.Entities
 {
-    [Table("Farm")]
-    public class Farm : BaseEntity
+    [Table("Supplier")]
+    public class Supplier : BaseEntity
     {
-        [MaxLength(100)]
+        [MaxLength(50)]
         [Required]
         public string Name { get; set; }
         [Required]

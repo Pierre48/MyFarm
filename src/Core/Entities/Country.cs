@@ -6,13 +6,11 @@ using System.Text;
 
 namespace Core.Entities
 {
-    [Table("Farm")]
-    public class Farm : BaseEntity
+    [Table("Country")]
+    public class Country : BaseEntity
     {
         [MaxLength(100)]
         [Required]
         public string Name { get; set; }
-        [Required]
-        public Address Address { get; set; }
     }
 }

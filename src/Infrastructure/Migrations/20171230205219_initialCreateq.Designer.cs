@@ -11,9 +11,10 @@ using System;
 namespace Infrastructure.Migrations
 {
     [DbContext(typeof(MyFarmContext))]
-    partial class MyFarmContextModelSnapshot : ModelSnapshot
+    [Migration("20171230205219_initialCreateq")]
+    partial class initialCreateq
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,15 +76,11 @@ namespace Infrastructure.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int>("AddressId");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AddressId");
 
                     b.ToTable("Farm");
                 });
@@ -153,14 +150,6 @@ namespace Infrastructure.Migrations
                     b.HasOne("Core.Entities.Country", "Country")
                         .WithMany()
                         .HasForeignKey("CountryId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
-            modelBuilder.Entity("Core.Entities.Farm", b =>
-                {
-                    b.HasOne("Core.Entities.Address", "Address")
-                        .WithMany()
-                        .HasForeignKey("AddressId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 

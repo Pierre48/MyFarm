@@ -19,12 +19,12 @@ namespace Infrastructure.Data
             this._configuration = configuration;
         }
 
+        public DbSet<Address> Addresses { get; set; }
+        public DbSet<Country> Countries { get; set; }
         public DbSet<Farm> Farms { get; set; }
-
-        protected override void OnModelCreating(ModelBuilder builder)
-        {
-            builder.Entity<Farm>(ConfigureFarm);
-        }
+        public DbSet<Invoice> Invoices { get; set; }
+        public DbSet<InvoiceLine> InvoiceLines { get; set; }
+        public DbSet<Supplier> Suppliers { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -35,18 +35,5 @@ namespace Infrastructure.Data
 
             base.OnConfiguring(optionsBuilder);
         }
-
-        private void ConfigureFarm(EntityTypeBuilder<Farm> builder)
-        {
-            builder.ToTable("Farm");
-
-            builder.Property(ci => ci.Id)
-                .ForNpgsqlUseSequenceHiLo("catalog_hilo");
-
-            builder.Property(ci => ci.Name)
-                .IsRequired(true)
-                .HasMaxLength(50);
-        }
-
     }
 }
