@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Identity;
 using System.Collections.Generic;
 
-namespace MyFarm.ViewModels.Manage
+namespace MyFarm.Web.ViewModels.Manage
 {
     public class ExternalLoginsViewModel
     {

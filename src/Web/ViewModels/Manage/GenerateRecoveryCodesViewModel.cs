@@ -1,4 +1,4 @@
-﻿namespace MyFarm.ViewModels.Manage
+﻿namespace MyFarm.Web.ViewModels.Manage
 {
     public class GenerateRecoveryCodesViewModel
     {

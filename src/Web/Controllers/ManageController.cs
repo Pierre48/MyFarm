@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Text.Encodings.Web;
 using System.Threading.Tasks;
-using MyFarm.ViewModels.Manage;
+using MyFarm.Web.ViewModels.Manage;
 using MyFarm.Web.Extensions;
 
 namespace MyFarm.Web.Controllers

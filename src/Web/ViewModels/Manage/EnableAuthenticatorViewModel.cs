@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
-namespace MyFarm.ViewModels.Manage
+namespace MyFarm.Web.ViewModels.Manage
 {
     public class EnableAuthenticatorViewModel
     {
