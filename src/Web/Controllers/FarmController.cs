@@ -5,33 +5,72 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using MyFarm.Web.Models;
+using Microsoft.AspNetCore.Authorization;
+using MyFarm.Core.Interfaces;
+using MyFarm.Core.Entities;
+using MyFarm.Core.Specifications;
+using MyFarm.Web.ViewModels;
+using MyFarm.Web.ViewModels.Farm;
 
 namespace MyFarm.Web.Controllers
 {
+    [Authorize]
+    [Route("[controller]/[action]")]
     public class FarmController : Controller
     {
-        public IActionResult Index()
+        private readonly IAsyncRepository<Farm> _farmRepository;
+
+        public FarmController(IAsyncRepository<Farm> farmRepository)
         {
-            return View();
+            _farmRepository = farmRepository;
         }
 
-        public IActionResult About()
+        public async Task<IActionResult> Index()
         {
-            ViewData["Message"] = "Your application description page.";
-
-            return View();
+            IEnumerable<FarmViewModel> viewModel = await GetFarms();
+            return View(viewModel);
         }
 
-        public IActionResult Contact()
+        private async Task<IEnumerable<FarmViewModel>> GetFarms()
         {
-            ViewData["Message"] = "Your contact page.";
+            var farms = await _farmRepository.ListAsync(new UsersFarmSpecification(User.Identity.Name));
 
-            return View();
+            var viewModel = farms
+                .Select(f => new FarmViewModel
+                {
+                    Name = f.Name,
+                    Id = f.Id
+                });
+            return viewModel;
         }
 
-        public IActionResult Error()
+        [HttpGet("{farmId}")]
+        public async Task<IActionResult> Edit(int farmId)
         {
-            return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
+            var farm = await _farmRepository.GetByIdAsync(farmId);
+            var viewModel = new FarmViewModel()
+            {
+                Name = farm.Name,
+                Id = farm.Id
+            };
+            return View(viewModel);
+        }
+
+        [HttpGet("{farmId}")]
+        public async Task<IActionResult> Select(int farmId)
+        {
+            IEnumerable<FarmViewModel> viewModel = await GetFarms();
+            return View(nameof(Index), viewModel);
+        }
+
+        private FarmViewModel GetOrder()
+        {
+            var farm = new FarmViewModel()
+            {
+                Name = "" 
+            };
+
+            return farm;
         }
     }
 }

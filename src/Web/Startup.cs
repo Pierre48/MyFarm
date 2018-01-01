@@ -41,8 +41,21 @@ namespace Web
         public void ConfigureTestingServices(IServiceCollection services)
         {
             // use in-memory database
+            //services.AddDbContext<MyFarmContext>(c =>
+            //    c.UseInMemoryDatabase("MyFarm"));
+
+            // use real database
             services.AddDbContext<MyFarmContext>(c =>
-                c.UseInMemoryDatabase("MyFarm"));
+            {
+                try
+                {
+                    c.UseNpgsql(Configuration.GetConnectionString("DataAccessPostgreSqlProvider"));
+                }
+                catch (System.Exception ex)
+                {
+                    var message = ex.Message;
+                }
+            });
 
             // Add Identity DbContext
             services.AddDbContext<AppIdentityDbContext>(options =>

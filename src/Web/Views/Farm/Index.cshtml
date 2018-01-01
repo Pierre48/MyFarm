@@ -1,0 +1,30 @@
+﻿@using MyFarm.Web.ViewModels.Farm
+@model IEnumerable<FarmViewModel>
+@{
+    ViewData["Title"] = "My farms";
+}
+
+<div class="esh-farms">
+    <div class="container">
+        <h1>@ViewData["Title"]</h1>
+        <article class="esh-farms-titles row">
+            <section class="esh-farms-title col-xs-4">Name</section>
+            <section class="esh-farms-title col-xs-1"></section>
+        </article>
+        @if (Model != null && Model.Any())
+        {
+            @foreach (var item in Model)
+            {
+                <article class="esh-farms-items row">
+                    <section class="esh-farms-item col-xs-4">@Html.DisplayFor(modelItem => item.Name)</section>
+                    <section class="esh-farms-item col-xs-1">
+                        <a class="esh-farms-link" asp-controller="Farm" asp-action="Select" asp-route-farmId="@item.Id">Select</a>
+                    </section>
+                    <section class="esh-farms-item col-xs-1">
+                        <a class="esh-farms-link" asp-controller="Farm" asp-action="Edit" asp-route-farmId="@item.Id">Edit</a>
+                    </section>
+                </article>
+            }
+        }
+    </div>
+</div>

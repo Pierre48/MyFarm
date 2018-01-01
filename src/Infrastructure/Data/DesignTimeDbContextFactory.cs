@@ -12,7 +12,13 @@ namespace MyFarm.Infrastructure.Data
     {
         public MyFarmContext CreateDbContext(string[] args)
         {
-            return new MyFarmContext(new DbContextOptions<MyFarmContext>(), GetConfiguration());
+            var sqlConnectionString = GetConfiguration().GetConnectionString("DataAccessPostgreSqlProvider");
+
+            var optionsBuilder = new DbContextOptions<MyFarmContext>();
+
+            var context = new MyFarmContext(optionsBuilder);
+            //context. UseNpgsql(sqlConnectionString);
+            return new MyFarmContext(optionsBuilder);
         }
         static IConfiguration GetConfiguration()
         {

@@ -19,4 +19,12 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Views\Farm\Edit.cshtml" />
+  </ItemGroup>
+
 </Project>

@@ -11,12 +11,10 @@ namespace MyFarm.Infrastructure.Data
 
     public class MyFarmContext : DbContext
     {
-        private IConfiguration _configuration;
 
 
-        public MyFarmContext(DbContextOptions<MyFarmContext> options, IConfiguration configuration) : base(options)
+        public MyFarmContext(DbContextOptions<MyFarmContext> options) : base(options)
         {
-            this._configuration = configuration;
         }
 
         public DbSet<Address> Addresses { get; set; }
@@ -25,15 +23,6 @@ namespace MyFarm.Infrastructure.Data
         public DbSet<Invoice> Invoices { get; set; }
         public DbSet<InvoiceLine> InvoiceLines { get; set; }
         public DbSet<Supplier> Suppliers { get; set; }
-
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            var sqlConnectionString = _configuration.GetConnectionString("DataAccessPostgreSqlProvider");
-
-            optionsBuilder.UseNpgsql(
-                sqlConnectionString);
-
-            base.OnConfiguring(optionsBuilder);
-        }
+        
     }
 }
