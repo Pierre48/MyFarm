@@ -59,7 +59,7 @@ namespace Web
 
             // Add Identity DbContext
             services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseInMemoryDatabase("Identity"));
+                options.UseNpgsql(Configuration.GetConnectionString("IdentityConnection")));
 
             ConfigureServices(services);
         }
@@ -81,7 +81,7 @@ namespace Web
 
             // Add Identity DbContext
             services.AddDbContext<AppIdentityDbContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("IdentityConnection")));
+                options.UseNpgsql(Configuration.GetConnectionString("IdentityConnection")));
 
             ConfigureServices(services);
         }
